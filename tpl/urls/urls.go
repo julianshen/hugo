@@ -21,6 +21,7 @@ import (
 
 	"github.com/gohugoio/hugo/common/urls"
 	"github.com/gohugoio/hugo/deps"
+	"github.com/gosimple/slug"
 	"github.com/spf13/cast"
 )
 
@@ -220,4 +221,12 @@ func (ns *Namespace) JoinPath(elements ...any) (string, error) {
 		return "", err
 	}
 	return result, nil
+}
+
+func (ns *Namespace) Slugify(s any) (string, error) {
+	ss, err := cast.ToStringE(s)
+	if err != nil {
+		return "", nil
+	}
+	return slug.Make(ss), nil
 }

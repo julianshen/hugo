@@ -76,6 +76,13 @@ func init() {
 			},
 		)
 
+		ns.AddMethodMapping(ctx.Slugify,
+			[]string{"slugify"},
+			[][2]string{
+				{`{{ "This is a title" | slugify }}`, `this-is-a-title`},
+			},
+		)
+
 		return ns
 	}
 
